@@ -27,3 +27,12 @@ A simple Backend only Bakery-Managament Application in DJango and Postgresql
           
     - To bring down development containers (and the associated volumes with the -v flag) :
         > docker-compose down -v
+       
+3. #### BONUS POINTS :
+
+   - Docker for app env setup has been done using Dockerfile and docker-compose.yaml.
+   
+   - API endpoint /api/getpopularproducts/ is used for getting popular or hot selling products ( 3product with maximum 
+     sales).
+     
+   - Discount rule has been given in line no 67-70 (file : customerapp/serializers.py) in /api/place_order/ endpoint.
