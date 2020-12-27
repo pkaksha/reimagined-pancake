@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'registerlogin',
     'bakeryadmin',
+    'customerapp',
 ]
 
 MIDDLEWARE = [
