@@ -28,10 +28,12 @@ class AddInventoryItemSerializer(serializers.Serializer):
 
         existing = IngredientInventoryModel.objects.filter(Ingredient_ID=validated_data['Ingredient_ID']).values()
         if len(existing) == 0:
-            data = IngredientInventoryModel.objects.create(**validated_data)
+            IngredientInventoryModel.objects.create(**validated_data)
+            response = "Item Added to Inventory list with quantity and price details"
+
         else:
-            data = "Item Already Exist"
-        return data
+            response = "Item Already Exist"
+        return {"Response":response}
 
 
 class UpdateInventorySerializer(serializers.ModelSerializer):
