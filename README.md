@@ -2,7 +2,7 @@
 A simple Backend only Bakery-Managament Application in DJango and Postgresql
 
 1. #### POSTMAN API COLLECTION LINK
-https://www.getpostman.com/collections/24f3a32da6ec821f0e65
+> https://www.getpostman.com/collections/24f3a32da6ec821f0e65
 
 2. #### STEPS FOR RUNNING THE BAKERY_APP :
    
@@ -20,7 +20,8 @@ https://www.getpostman.com/collections/24f3a32da6ec821f0e65
     - To Migrate prebuilt Migrations into DB :
         > docker-compose exec web python manage.py migrate
       
-        - If any error such as jango.db.utils.OperationalError: FATAL:  database "db_name" does not exist then execute :
+        - If any error such as django.db.utils.OperationalError: FATAL:database "db_name" does not exist then 
+          execute:
             > 1. docker-compose down -v
             > 2. docker-compose exec web python manage.py migrate
           

@@ -92,8 +92,6 @@ class GetBakeryItemView(generics.ListAPIView):
     def get_queryset(self):
         queryset = BakeryItems.objects.values('Bakery_Item_Name', 'IngredientComposition', 'Item_quantity',
                                               'Cost_price', 'Sell_price')
-        print(queryset)
-
         df = pd.DataFrame(queryset)
         df = df.to_dict(orient='records')
 
@@ -112,11 +110,8 @@ class GetPopularItemView(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = BakeryItems.objects.values('Bakery_Item_Name', 'Sold_count')
-        print(queryset)
-
         df = pd.DataFrame(queryset)
         df_top_3 = df.nlargest(3, 'Sold_count')
-
         df_top_3 = df_top_3.to_dict(orient='records')
 
         return df_top_3

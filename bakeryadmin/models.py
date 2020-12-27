@@ -5,13 +5,12 @@ CHOICE_UNITS = (('Ltr', 'Ltr'), ('Kg', 'Kg'), ('Dozen', 'Dozen'), ('Piece', 'Pie
 
 
 class IngredientListModel(models.Model):
-    created = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
     Ingredient_Name = models.CharField(max_length=100)
 
 
 class IngredientInventoryModel(models.Model):
-    created = models.DateTimeField(auto_now_add=True, null=False, blank=False)
-    # Ingredient_Name = models.CharField(max_length=100)
+    created = models.DateTimeField(auto_now_add=True)
     Ingredient_ID = models.ForeignKey(IngredientListModel,
                                       related_name='inventory',
                                       on_delete=models.CASCADE)
@@ -25,7 +24,7 @@ class IngredientInventoryModel(models.Model):
 
 
 class BakeryItems(models.Model):
-    created = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
     Bakery_Item_Name = models.CharField(max_length=100)
     IngredientComposition = models.JSONField(default=dict)
     Item_quantity = models.IntegerField()

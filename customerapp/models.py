@@ -47,7 +47,7 @@ states_choices = (("AN", "Andaman and Nicobar Islands"),
 
 
 class CustomerAddressDetails(models.Model):
-    created = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
     cust_id = models.ForeignKey(UserProfileModel,
                                 related_name='address',
                                 on_delete=models.CASCADE)
@@ -55,12 +55,12 @@ class CustomerAddressDetails(models.Model):
     City = models.CharField(max_length=50)
     Pincode = models.IntegerField(validators=[MaxLengthValidator(6), MinLengthValidator(6)])
     State = models.CharField(choices=states_choices, max_length=50)
-    phone_number = PhoneNumberField(null=False, blank=False, default='0')
+    phone_number = PhoneNumberField(default='0')
     address_type = models.CharField(choices=address_choices, max_length=10, default="Others")
 
 
 class OrderParticularsModel(models.Model):
-    created = models.DateTimeField(auto_now_add=True, null=False, blank=False)
+    created = models.DateTimeField(auto_now_add=True)
     order_no = models.CharField(max_length=50, default="")
     cust_id = models.ForeignKey(UserProfileModel,
                                 related_name='order',
