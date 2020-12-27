@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_auth',
     'phonenumber_field',
-    'registerlogin'
+    'registerlogin',
+    'bakeryadmin',
 ]
 
 MIDDLEWARE = [
