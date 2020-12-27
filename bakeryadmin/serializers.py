@@ -24,8 +24,6 @@ class AddInventoryItemSerializer(serializers.Serializer):
     UnitInPricePerUnit = serializers.CharField()
 
     def create(self, validated_data):
-        print(validated_data)
-
         existing = IngredientInventoryModel.objects.filter(Ingredient_ID=validated_data['Ingredient_ID']).values()
         if len(existing) == 0:
             IngredientInventoryModel.objects.create(**validated_data)
@@ -48,7 +46,6 @@ class UpdateInventorySerializer(serializers.ModelSerializer):
         fields = ['Quantity', 'QuantityUnit', 'price', 'UnitInPricePerUnit', 'type', ]
 
     def update(self, instance, validated_data):
-        print(validated_data)
         if validated_data['type'] == 'Add':
             origin_quantity = instance.Quantity
             instance.Quantity = instance.Quantity + validated_data['Quantity']

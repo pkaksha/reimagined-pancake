@@ -23,7 +23,6 @@ class GetBakeryAvailableProductsView(generics.ListAPIView):
     def get_queryset(self):
         queryset = BakeryItems.objects.filter(Item_quantity__gte=1).values('Bakery_Item_Name', 'Item_quantity',
                                                                            'Sell_price')
-        print(queryset)
 
         df = pd.DataFrame(queryset)
         df = df.to_dict(orient='records')
@@ -80,8 +79,6 @@ class PlaceOrderview(APIView):
 
     def post(self, request):
 
-        print(request.data)
-
         serializer = self.serializer_class(data=request.data, many=True)
         if serializer.is_valid():
 
@@ -113,10 +110,6 @@ class GetOrderBillView(generics.ListAPIView):
         address_id = [x['address_id'] for x in queryset]
         cust_id = [x['cust_id'] for x in queryset]
 
-        print(bakery_item_id)
-        print(address_id)
-        print(cust_id)
-
         customer_first_name = list(UserProfileModel.objects.filter(id__in=cust_id).values('first_name'))[0][
             'first_name']
         customer_last_name = list(UserProfileModel.objects.filter(id__in=cust_id).values('last_name'))[0]['last_name']
@@ -144,7 +137,6 @@ class GetOrderBillView(generics.ListAPIView):
         df['State'] = address_state
         df['Total_Amount'] = (df['Total'].sum()).round(1)
 
-        print(df)
         df = df.to_dict(orient='records')
 
         return df

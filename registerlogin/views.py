@@ -52,7 +52,6 @@ class UserActivationView(APIView):
 
         serializer = self.serializer_class(data=post_data,
                                            context={'request': request})
-        # print(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
             data = UserDetailsSerializer(self.get_queryset(post_data)).data
@@ -88,9 +87,7 @@ class UserLogin(APIView):
                     'client_secret': settings.CLIENT_SECRET,
                 },
                 )
-            print("status_code", r.status_code)
-            # print("data",r.json())
-            # if r.status_code == 200:
+
             if r.status_code == 200:
                 return_data = r.json()
                 return_data['user_info'] = user_data

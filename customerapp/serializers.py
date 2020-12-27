@@ -22,8 +22,6 @@ class CreateAddressDetailsSerializer(serializers.Serializer):
     address_type = serializers.CharField()
 
     def create(self, validated_data):
-        print(validated_data)
-
         CustomerAddressDetails.objects.create(**validated_data)
 
         response = "Address Details Added"
@@ -44,8 +42,6 @@ class PlaceOrderSerializer(serializers.Serializer):
     Ordered_Quantity = serializers.IntegerField()
 
     def create(self, validated_data):
-        print(validated_data)
-
         iq = list(BakeryItems.objects.filter(id=validated_data['Bakery_item_id'].id).values('Item_quantity'))[0][
             'Item_quantity']
 
